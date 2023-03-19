@@ -35,5 +35,13 @@ app.listen(port, () => {
 
 // Just to ping!
 bot.on('message', msg => {
-  bot.sendMessage(msg.chat.id, 'I am alive!');
+  const { message_id: originalMessageId, from: { username }, chat: { id: chatId } } = msg;
+
+  if(username !== '@kekassssss'){
+    return;
+  }
+
+  bot.sendMessage(chatId, `Пішов нахуй ${username}`, {
+    reply_to_message_id: originalMessageId
+  });
 });
