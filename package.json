@@ -1,0 +1,22 @@
+{
+  "name": "alex-bot",
+  "version": "0.0.1",
+  "description": "Express alex-bot on Render",
+  "main": "app.js",
+  "repository": "https://github.com/valuta777/alexbot",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-telegram-bot-api": "^0.61.0"
+  },
+  "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.61.3"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
