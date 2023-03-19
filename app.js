@@ -5,8 +5,8 @@
 /* eslint-disable no-console */
 
 const TOKEN = process.env.TELEGRAM_TOKEN || 'YOUR_TELEGRAM_BOT_TOKEN';
-const url = 'https://api.telegram.org/';
-const port = process.env.PORT;
+const url = process.env.URL || 'localhost';
+const port = process.env.PORT || 3000;
 
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
