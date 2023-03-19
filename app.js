@@ -6,7 +6,7 @@
 
 const TOKEN = process.env.TELEGRAM_TOKEN || 'YOUR_TELEGRAM_BOT_TOKEN';
 const url = process.env.URL || 'localhost';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8081;
 
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
