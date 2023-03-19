@@ -15,8 +15,5 @@
   },
   "devDependencies": {
     "@types/node-telegram-bot-api": "^0.61.3"
-  },
-  "engines": {
-    "node": ">=14"
   }
 }
