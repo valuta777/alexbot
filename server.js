@@ -13,12 +13,12 @@ const app = express();
 
 // This informs the Telegram servers of the new webhook.
 const setupWebhook = async () => {
+  console.log('webhook setup ...');
   try {
-    const result = await bot.setWebHook(`${url}/bot${TOKEN}`, {
-      certificate: './crt.pem', // Path to your crt.pem
-    });
-    console.log('webhook setup', result);
+    const result = await bot.setWebHook(`${url}/bot${TOKEN}`);
+    console.log('webhook setup done', result);
   } catch (error) {
+    console.error(error);
     return error
   }
 }
