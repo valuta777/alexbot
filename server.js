@@ -5,6 +5,7 @@ const TOKEN = process.env.TELEGRAM_TOKEN;
 const url = process.env.URL || 'localhost';
 const port = process.env.PORT || 8081;
 const usersToShutUp = process.env.USER_IDS || '';
+const sticker = process.env.STICKER; 
 
 // No need to pass any parameters as we will handle the updates with Express
 const bot = new TelegramBot(TOKEN);
@@ -64,11 +65,12 @@ bot.on('message', async (msg) => {
     console.error(error);
   };
 
-  try {
-    const result = await bot.sendSticker(chatId, 'AAMCAgADHQJ0F9TBAAPAZBjCHWHV0jXapPjiVfj34wIgz4UAApkeAALct4FK5acsQRxWXJkBAAdtAAMvBA')
-    console.log('Send sticker', result);
-  } catch (error) {
-    console.error(error);
-  };
-
+  if(stiker) {
+    try {
+      const result = await bot.sendSticker(chatId, sticker)
+      console.log('Send sticker', result);
+    } catch (error) {
+      console.error(error);
+    };
+  }
 });
