@@ -4,7 +4,7 @@ const express = require('express');
 const TOKEN = process.env.TELEGRAM_TOKEN;
 const url = process.env.URL || 'localhost';
 const port = process.env.PORT || 8081;
-const usersToShutUp = process.env.USER_IDS?.split(',');
+const usersToShutUp = process.env.USER_IDS;
 
 // No need to pass any parameters as we will handle the updates with Express
 const bot = new TelegramBot(TOKEN);
@@ -48,7 +48,7 @@ bot.on('message', async (msg) => {
 
   console.log(`Receiving message`, JSON.stringify(msg));
 
-  if (!usersToShutUp?.includes(id.toString())) {
+  if (!usersToShutUp.includes(id.toString())) {
     console.log(`Message not from ${usersToShutUp.join(' ')}`);
     return;
   }
