@@ -2,18 +2,26 @@
   "name": "alex-bot",
   "version": "0.0.1",
   "description": "Express alex-bot on Render",
-  "main": "app.js",
+  "main": "server.js",
   "repository": "https://github.com/valuta777/alexbot",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node app.js"
+    "start": "node server.js",
+    "deploy": "gcloud app deploy",
+    "test": "mocha --exit test/*.test.js"
+  },
+  "engines": {
+    "node": "16.x.x"
   },
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.16.3",
     "node-telegram-bot-api": "^0.61.0"
   },
   "devDependencies": {
-    "@types/node-telegram-bot-api": "^0.61.3"
+    "@types/node-telegram-bot-api": "^0.61.3",
+    "mocha": "^10.0.0",
+    "supertest": "^6.0.0",
+    "proxyquire": "^2.1.3"
   }
 }
