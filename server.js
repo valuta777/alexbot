@@ -57,7 +57,7 @@ bot.on('message', async (msg) => {
   console.log(`Sending message to ${username}`, msg);
 
   try {
-    const result = await bot.sendMessage(chatId, `Пішов нахуй ${username}`, {
+    const result = await bot.sendMessage(chatId, `Пішов нахуй @${username}`, {
       reply_to_message_id: originalMessageId
     })
     console.log('Send message', result);
