@@ -48,8 +48,8 @@ bot.on('message', async (msg) => {
 
   console.log(`Receiving message`, JSON.stringify(msg));
 
-  if (!usersToShutUp?.includes(id)) {
-    console.log(`Message not from ${answerUsername}`);
+  if (!usersToShutUp?.includes(id.toString())) {
+    console.log(`Message not from ${usersToShutUp.join(' ')}`);
     return;
   }
 
