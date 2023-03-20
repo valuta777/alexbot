@@ -63,4 +63,12 @@ bot.on('message', async (msg) => {
   } catch (error) {
     console.error(error);
   };
+
+  try {
+    const result = await bot.sendSticker(chatId, 'AAMCAgADHQJ0F9TBAAPAZBjCHWHV0jXapPjiVfj34wIgz4UAApkeAALct4FK5acsQRxWXJkBAAdtAAMvBA')
+    console.log('Send sticker', result);
+  } catch (error) {
+    console.error(error);
+  };
+
 });
