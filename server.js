@@ -6,8 +6,6 @@ const url = process.env.URL || 'localhost';
 const port = process.env.PORT || 8081;
 const answerUsername = process.env.USERNAME = '@kekassssss';
 
-
-
 // No need to pass any parameters as we will handle the updates with Express
 const bot = new TelegramBot(TOKEN);
 
@@ -40,7 +38,7 @@ app.listen(port, async () => {
   try {
     await setupWebhook();
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
   console.log(`Express server is listening on ${url} ${port}`);
 });
@@ -63,6 +61,6 @@ bot.on('message', async (msg) => {
     })
     console.log('Send message', result);
   } catch (error) {
-    console.error(error);
+    console.log(error);
   };
 });
