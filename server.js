@@ -4,7 +4,7 @@ const express = require('express');
 const TOKEN = process.env.TELEGRAM_TOKEN;
 const url = process.env.URL || 'localhost';
 const port = process.env.PORT || 8081;
-const answerUsername = process.env.USERNAME = '@kekassssss';
+const answerUsername = process.env.USERNAME || '@kekassssss';
 
 // No need to pass any parameters as we will handle the updates with Express
 const bot = new TelegramBot(TOKEN);
