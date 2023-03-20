@@ -7,8 +7,7 @@
 const TOKEN = process.env.TELEGRAM_TOKEN;
 const url = process.env.URL || 'localhost';
 const port = process.env.PORT || 8081;
-console.log(`process.env ${TOKEN}`);
-
+const answerUsername = process.env.USERNAME = '@kekassssss';
 
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
@@ -26,6 +25,7 @@ app.use(express.json());
 
 // We are receiving updates at the route below!
 app.post(`/bot${TOKEN}`, (req, res) => {
+  console.log(`Receiving updates ${JSON.stringify(req.body)}`);
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
@@ -37,9 +37,11 @@ app.listen(port, () => {
 
 // Just to ping!
 bot.on('message', msg => {
-  const { message_id: originalMessageId, from: { username }, chat: { id: chatId } } = msg;
+  const { message_id: originalMessageId, from: { username }, chat: { id: chatId, title} } = msg;
 
-  if(username !== '@kekassssss'){
+  console.log(`Receiving message from ${username} in chat ${title}`);
+
+  if (username !== answerUsername) {
     return;
   }
 
