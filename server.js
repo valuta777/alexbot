@@ -65,7 +65,7 @@ bot.on('message', async (msg) => {
     console.error(error);
   };
 
-  if(stiker) {
+  if(sticker) {
     try {
       const result = await bot.sendSticker(chatId, sticker)
       console.log('Send sticker', result);
