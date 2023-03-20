@@ -27,6 +27,11 @@ const setupWebhook = async () => {
 // parse the updates to JSON
 app.use(express.json());
 
+// health request
+app.get('/health', (res) => {
+  res.sendStatus(200);
+});
+
 // We are receiving updates at the route below!
 app.post(`/bot${TOKEN}`, (req, res) => {
   bot.processUpdate(req.body);
