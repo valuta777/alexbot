@@ -4,7 +4,7 @@ const express = require('express');
 const TOKEN = process.env.TELEGRAM_TOKEN;
 const url = process.env.URL || 'localhost';
 const port = process.env.PORT || 8081;
-const answerUsername = process.env.USERNAME || '@kekassssss';
+const usersToShutUp = process.env.USER_IDS?.split(',');
 
 // No need to pass any parameters as we will handle the updates with Express
 const bot = new TelegramBot(TOKEN);
@@ -16,7 +16,7 @@ const setupWebhook = async () => {
   console.log('webhook setup ...');
   try {
     const result = await bot.setWebHook(`${url}/bot${TOKEN}`);
-    console.log('webhook setup done', result);
+    console.log('webhook setup done', JSON.stringify(result));
   } catch (error) {
     console.error(error);
     return error
@@ -28,7 +28,6 @@ app.use(express.json());
 
 // We are receiving updates at the route below!
 app.post(`/bot${TOKEN}`, (req, res) => {
-  console.log('Receiving updates', req.body);
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
@@ -38,23 +37,23 @@ app.listen(port, async () => {
   try {
     await setupWebhook();
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
   console.log(`Express server is listening on ${url} ${port}`);
 });
 
 // Just to ping!
 bot.on('message', async (msg) => {
-  const { message_id: originalMessageId, from: { username }, chat: { id: chatId} } = msg;
+  const { message_id: originalMessageId, from: { username, id }, chat: { id: chatId} } = msg;
 
-  console.log(`Receiving message`, msg);
+  console.log(`Receiving message`, JSON.stringify(msg));
 
-  if (username !== answerUsername) {
+  if (!usersToShutUp?.includes(id)) {
     console.log(`Message not from ${answerUsername}`);
     return;
   }
 
-  console.log(`Sending message to ${username}`, msg);
+  console.log(`Sending message to ${username}`);
 
   try {
     const result = await bot.sendMessage(chatId, `Пішов нахуй @${username}`, {
@@ -62,6 +61,6 @@ bot.on('message', async (msg) => {
     })
     console.log('Send message', result);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   };
 });
