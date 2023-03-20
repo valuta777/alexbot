@@ -7,6 +7,8 @@
 const TOKEN = process.env.TELEGRAM_TOKEN;
 const url = process.env.URL || 'localhost';
 const port = process.env.PORT || 8081;
+console.log(`process.env ${TOKEN}`);
+
 
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
@@ -30,7 +32,7 @@ app.post(`/bot${TOKEN}`, (req, res) => {
 
 // Start Express Server
 app.listen(port, () => {
-  console.log(`Express server is listening on ${port}`);
+  console.log(`Express server is listening on ${url} ${port}`);
 });
 
 // Just to ping!
