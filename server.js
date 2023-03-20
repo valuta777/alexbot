@@ -45,11 +45,12 @@ app.listen(port, async () => {
 
 // Just to ping!
 bot.on('message', async (msg) => {
-  const { message_id: originalMessageId, from: { username }, chat: { id: chatId, title} } = msg;
+  const { message_id: originalMessageId, from: { username }, chat: { id: chatId} } = msg;
 
   console.log(`Receiving message`, msg);
 
   if (username !== answerUsername) {
+    console.log(`Message not from ${answerUsername}`);
     return;
   }
 
